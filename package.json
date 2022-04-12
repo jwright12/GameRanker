@@ -1,0 +1,34 @@
+{
+  "name": "gameranker",
+  "version": "1.0.0",
+  "description": "CS411 Final Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwright12/GameRanker.git"
+  },
+  "keywords": [
+    "MERN",
+    "MVC",
+    "React",
+    "Node",
+    "Express",
+    "Mongo"
+  ],
+  "author": "Joe Wright, Tanyi Besong, Phil Henaman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwright12/GameRanker/issues"
+  },
+  "homepage": "https://github.com/jwright12/GameRanker#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
