@@ -34,5 +34,9 @@ app.get('/', (req, res) => {
     res.send("test")
 });
 
+app.get('/databasequery/', (req, res) => {
+    res.send("do something else");
+});
+
 //app.use('/api/games',require('./routes/api/games'))
 app.listen(8080, () => console.log("Server started on port 8080."))
