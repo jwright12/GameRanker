@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
+import { Link, Box, Flex, Text, Button, Stack, Heading, Spacer } from "@chakra-ui/react";
 import Logo from "./Logo";
 
 const NavBar = (props) => {
@@ -10,6 +10,8 @@ const NavBar = (props) => {
     return (
       <NavBarContainer {...props}>
         <Logo w="75px"/>
+        <Heading color="white" padding="25px">GameRanker</Heading>
+        <Spacer />
         <MenuToggle toggle={toggle} isOpen={isOpen} />
         <MenuLinks isOpen={isOpen} />
       </NavBarContainer>
@@ -77,8 +79,7 @@ const NavBar = (props) => {
           pt={[4, 4, 0, 0]}
         >
           <MenuItem to="/">Home</MenuItem>
-          <MenuItem to="/about">About </MenuItem>
-          <MenuItem to="/contact" isLast>
+          <MenuItem to="/add_game" isLast>
             <Button
               size="sm"
               rounded="md"
@@ -88,7 +89,7 @@ const NavBar = (props) => {
                 bg: ["primary.300"]
               }}
             >
-              Contact Us
+              Add A New Game 
             </Button>
           </MenuItem>
         </Stack>

@@ -1,15 +1,23 @@
 import logo from './logo.svg';
-import './App.css';
-
 import React,{Component} from 'react';
-import { Routes, Route } from "react-router-dom";
+import {BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Navbar from './components/Navbar';
+import FilterView from './components/FilterView';
+import NoPage from './components/NoPage';
+import { ChakraProvider } from '@chakra-ui/react';
+import customTheme from "./utils/theme"
 
 function App() {
   return (
-    <div>
+   <ChakraProvider theme={customTheme}>
+     <BrowserRouter>
         <Navbar />
-      </div>
+        <Routes>
+          <Route path="/" element={<FilterView />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+     </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
