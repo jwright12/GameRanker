@@ -9,10 +9,17 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 
+// Configure CORs so the server is permitted to talk with our fron-end
+const corsOpts = {
+    origin: 'http://localhost'
+}
+app.use(cors(corsOpts));
+
 // URI to Mongo Server ~ Use localhost
-const db = 'mongodb://127.0.0.1:27017/gameranker'
+const db = 'mongodb://127.0.0.1:27017/GameRanker';
 
 // Mongoose is a package to connect to the MongoDB server
 // Akin to a mysqli with PHP or JDBC with Java
@@ -24,19 +31,14 @@ mongoose
     .catch(err=>console.log(err));
 
 // Middleware - 
-app.use(express.json())
+app.use(express.json());
 
 // This tells the server when and how to serve the React app. 
 // In PHP terms, this is how the 'index.html' page is served.
 app.use(express.static('client/build'));
 
-app.get('/', (req, res) => {
-    res.send("test")
-});
+// End-points act as request Controller
+app.use('/controllers/filter_games', require('./controllers/ListAndFilterController'));
+app.use('/controllers/add_game', require('./controllers/AddGameController'));
 
-app.get('/databasequery/', (req, res) => {
-    res.send("do something else");
-});
-
-//app.use('/api/games',require('./routes/api/games'))
 app.listen(8080, () => console.log("Server started on port 8080."))
