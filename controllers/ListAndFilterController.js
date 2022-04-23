@@ -15,15 +15,16 @@ const express = require('express');
 const router = express.Router();
 const Game = require('../models/GameModel');
 
-router.get('/', async function (req,res) {
-    // Game.find()
-    // .sort({votes: -1})
-    // .then(games => res.json(games))
-    res.status(200).json([{platform: 'Xbox' }, {platform: 'PlayStation'}])
+router.get('/platforms', async function (req,res) {
+    Game.distinct("platform")
+    .then(games => res.status(200).json(games))
+    .catch(err => res.status(404).send("Error fetching game platfomr values."));
 })
 
-router.get('/:dimension', (req,res) => {
-    res.send("OK")
+router.get('/genres', async function (req,res) {
+    Game.distinct("genre")
+    .then(games => res.status(200).json(games))
+    .catch(err => res.status(404).send("Error fetching game genre values."));
 })
 
 module.exports = router;

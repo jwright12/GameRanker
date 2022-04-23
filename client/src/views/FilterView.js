@@ -6,13 +6,12 @@ const FilterView = () => {
     const [filterDimensions, setFilterDimensions] = React.useState([]);
 
     React.useEffect(() => {
-        const url = "/controllers/filter_games";
+        const url = "/controllers/filter_games/platforms";
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
             setIsLoading(false);
             setFilterDimensions(json);
-            console.log(filterDimensions)
         })
         .catch((error) => console.log(error));
     }, []);
@@ -26,11 +25,10 @@ const FilterView = () => {
                     <Text as='em'>Platform:</Text>
                     {isLoading ? (<h1>Fetching Games...</h1>)
                                 : filterDimensions.map((dim) => (
-                                    <React.Fragment key={dim.platform}>
-                                        <Checkbox>{dim.platform}</Checkbox>
+                                    <React.Fragment key={dim}>
+                                        <Checkbox>{dim}</Checkbox>
                                     </React.Fragment>
-                                    ))
-                    }
+                                    ))}
                 </Stack>
             </CheckboxGroup>
         </VStack>
