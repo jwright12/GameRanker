@@ -19,7 +19,7 @@ const GameSchema = new Schema(
             required: true
         },
         genre:{
-            type: [String],
+            type: String,
             required: true
         },
         release_data:{

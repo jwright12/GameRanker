@@ -15,7 +15,7 @@ const express = require('express');
 const router = express.Router();
 const Game = require('../models/GameModel');
 
-router.get('/', (req,res) => {
+router.get('/', async function (req,res) {
     // Game.find()
     // .sort({votes: -1})
     // .then(games => res.json(games))
