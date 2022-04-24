@@ -19,19 +19,43 @@ router.post('/', async function (req,res) {
          title:"Zelda BoTW",
          platform:"Nintendo Switch",
          publisher:"Nintendo",
-         genre:"ARPG"
+         genre:"ARPG",
+         votes: 0
+      },
+      {
+         title:"Hades",
+         platform:"Nintendo Switch",
+         publisher:"Nintendo",
+         genre:"ARPG",
+         votes: 0
+      },
+      {
+         title:"Celeste",
+         platform:"Nintendo Switch",
+         publisher:"Nintendo",
+         genre:"Indie",
+         votes: 0
+      },
+      {
+         title:"Stardew Valley",
+         platform:"Nintendo Switch",
+         publisher:"Nintendo",
+         genre:"Indie",
+         votes: 0
       },
       {
          title:"Super Metroid",
          platform:"Super Nintendo",
          publisher:"Nintendo",
-         genre:"Action Adventure"
+         genre:"Action Adventure",
+         votes: 0
       },
       {
          title:"Golden Eye 007",
          platform:"Nintendo 64",
          publisher:"Nintendo",
-         genre:"FPS"
+         genre:"FPS",
+         votes: 0
       }
    ];
    

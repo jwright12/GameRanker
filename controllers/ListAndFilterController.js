@@ -34,6 +34,13 @@ router.get('/games/:platform', async function (req,res) {
     }
 })
 
+router.post('/vote/game/:id/:up', async function (req,res) {
+    console.log(req.params.id)
+    console.log(req.params.up)
+
+   res.status(201).send("Vote recorded.")
+})
+
 router.get('/genres', async function (req,res) {
     Game.distinct("genre")
     .then(games => res.status(200).json(games))

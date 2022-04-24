@@ -1,6 +1,6 @@
 import React from 'react';
 import RankedListView from "./RankedListView";
-import { Menu, MenuButton, MenuList, MenuItem, Center, StackDivider, Button, Text, Stack, Heading, Spacer, VStack, MenuOptionGroup, MenuItemOption } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem, Center, StackDivider, Button, Text, Stack, Heading, Spacer, VStack, MenuOptionGroup, MenuItemOption, Container, Divider } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons"
 
 const FilterView = () => {
@@ -34,29 +34,31 @@ const FilterView = () => {
     }, []);
 
     return (
-    <Center>
-        <VStack divider={<StackDivider borderColor='gray.200' />} spacing={4}>
-            <Heading>Filter Games By Dimension</Heading>
-            <Menu closeOnSelect={true}>
-                {({ isOpen }) => (
-                    <>
-                    <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
-                            {isOpen ? 'Close' : buttonText}
-                    </MenuButton>
-                    <MenuList minWidth='240px'>
-                        <MenuOptionGroup defaultValue='All' title='Platform' type='radio' onChange={platformSelect}>
-                        <MenuItemOption key='All' value='All'>All</MenuItemOption>
-                        {filterDimensions.map((dim) => (
-                                <MenuItemOption key={dim} value={dim} type='radio'>{dim}</MenuItemOption>
-                            ))}
-                        </MenuOptionGroup>
-                    </MenuList>
-                    </>
-                )}
-            </Menu>
-           <RankedListView platformSelection = {platformSelection} />
-        </VStack>
-    </Center>
+    <Container p={5} shadow='md' borderWidth='1px'>
+        <Center padding={'25px'}>
+            <VStack divider={<StackDivider borderColor='gray.200' />} spacing={4}>
+                <Heading>Filter Games By Dimension</Heading>
+                <Menu closeOnSelect={true}>
+                    {({ isOpen }) => (
+                        <>
+                        <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
+                                {isOpen ? 'Close' : buttonText}
+                        </MenuButton>
+                        <MenuList minWidth='240px'>
+                            <MenuOptionGroup defaultValue='All' title='Platform' type='radio' onChange={platformSelect}>
+                            <MenuItemOption key='All' value='All'>All</MenuItemOption>
+                            {filterDimensions.map((dim) => (
+                                    <MenuItemOption key={dim} value={dim} type='radio'>{dim}</MenuItemOption>
+                                ))}
+                            </MenuOptionGroup>
+                        </MenuList>
+                        </>
+                    )}
+                </Menu>
+            </VStack>
+        </Center>
+        <RankedListView platformSelection = {platformSelection} />
+    </Container>
     )
 }
 
