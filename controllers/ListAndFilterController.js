@@ -17,8 +17,28 @@ const Game = require('../models/GameModel');
 
 router.get('/platforms', async function (req,res) {
     Game.distinct("platform")
-    .then(games => res.status(200).json(games))
+    .then(platforms => res.status(200).json(platforms))
     .catch(err => res.status(404).send("Error fetching game platfomr values."));
+})
+
+router.get('/games/:platform', async function (req,res) {
+    console.log(req.params.platform)
+    if(req.params.platform === 'All') {
+        Game.find()
+            .then(games => res.status(200).json(games))
+            .catch(err => res.status(404).send("Error fetching all games."));
+    } else {
+        Game.find( {platform: req.params.platform} )
+            .then(games => res.status(200).json(games))
+            .catch(err => res.status(404).send("Error fetching all games."));
+    }
+})
+
+router.post('/vote/game/:id/:up', async function (req,res) {
+    console.log(req.params.id)
+    console.log(req.params.up)
+
+   res.status(201).send("Vote recorded.")
 })
 
 router.get('/genres', async function (req,res) {
