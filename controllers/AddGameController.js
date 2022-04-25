@@ -15,7 +15,7 @@ const Game = require('../models/GameModel');
 router.post('/', async function (req,res) {
    console.log("Game Post")
    const games = [
-      {/* Nintendo */}
+     
       {
          title:"Zelda: Breath of the Wild",
          platform:"Nintendo Switch",
@@ -58,7 +58,7 @@ router.post('/', async function (req,res) {
          genre:"FPS",
          votes: 0
 
-      }
+      },
       {
          title:"Mario Kart 8 Deluxe",
          platform:"Nintendo Switch",
@@ -157,7 +157,7 @@ router.post('/', async function (req,res) {
          genre:"RPG",
          votes: 0
       },
-      {/* Playstation */}
+   
 
       {
          title:"God of War",
@@ -300,8 +300,7 @@ router.post('/', async function (req,res) {
          votes: 0
       },
 
-
-      {/* Xbox */}
+ 
 
       {
          title:"Halo Combat Evolved",
