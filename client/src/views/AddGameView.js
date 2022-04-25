@@ -66,21 +66,21 @@ const AddGameView = (props) => {
 
     return (
      
-      <div>
+<div>
         <Center>
-          <FormLabel as='legend'>Add Game Form</FormLabel>
+        <FormLabel as='legend'>Add Game Form</FormLabel>
         </Center>
         
-       <center> <Box bg='White' w='75%' p={4} color='Black' borderColor='primary.700' borderWidth='3px' borderRadius='lg'>
+ <center> <Box bg='White' w='75%' p={4} color='Black' borderColor='primary.700' borderWidth='3px' borderRadius='lg'>
 
 <ChakraProvider theme={theme}>
   <Box p={8}>
     <FormControl variant='floating' id='Game-title' isRequired isInvalid>
        <Input placeholder=' ' />
-          <FormLabel>Game title</FormLabel>
-        </FormControl>
-      </Box>
-    </ChakraProvider>
+       <FormLabel>Game title</FormLabel>
+    </FormControl>
+  </Box>
+</ChakraProvider>
 {/*
         <FormControl isRequired>
   <FormLabel htmlFor='game-title'>Game title</FormLabel>
@@ -92,13 +92,17 @@ const AddGameView = (props) => {
 <Divider size= '5000px'  color='primary.700' />
 
 <ChakraProvider theme={theme}>
-      <Box p={8}>
-        <FormControl variant='floating' id='Game-publisher' isRequired isInvalid>
-          <Input placeholder=' ' />
-          <FormLabel>Game publisher</FormLabel>
-        </FormControl>
-      </Box>
-    </ChakraProvider>
+  <Box p={8}>
+    <FormControl variant='floating' id='Game-publisher' isRequired isInvalid>
+       <Input placeholder=' ' />
+       <FormLabel>Game Publisher</FormLabel>
+    </FormControl>
+  </Box>
+</ChakraProvider>
+
+<Divider size= '5000px'  color='primary.700' />
+
+
    {/* 
 <FormControl isRequired>
   <FormLabel htmlFor='game-publisher'>Game Publisher</FormLabel>
@@ -106,11 +110,11 @@ const AddGameView = (props) => {
 </FormControl>
 */}
 
-<Divider size= '5000px'  color='primary.700' />
+
 
 
 <ChakraProvider theme={theme}>
-      <Box p={8}>
+   <Box p={8}>
 <FormLabel as='legend'>Game Release Year</FormLabel>
 <NumberInput size='sm' defaultValue={2022} min={1971} max={2022}>
   <NumberInputField focusBorderColor='red.200' />
@@ -128,7 +132,7 @@ const AddGameView = (props) => {
   </NumberInputStepper>
 </NumberInput>
 </Box>
-    </ChakraProvider>
+</ChakraProvider>
 
 
 <Divider size= '5000px'  color='primary.700' />
@@ -160,8 +164,8 @@ const AddGameView = (props) => {
       
 <FormLabel as='legend' >Game description</FormLabel>
 <Textarea placeholder='Enter game description here.' />
-</Box>
-    </ChakraProvider>
+  </Box>
+</ChakraProvider>
 
 
 
@@ -169,14 +173,17 @@ const AddGameView = (props) => {
 
 
 <ChakraProvider theme={theme}>
-      <Box p={8}>
+    <Box p={8}>
       
 <FormLabel as='legend'>Select a Game Genre</FormLabel>
 <Select placeholder='Game genre'>
   <option value='option1'>Action</option>
   <option value='option2'>Adventure</option>
+  <option value='option2'>Action-Adventure</option>
   <option value='option3'>Puzzle</option>
   <option value='option4'>RPG</option>
+  <option value='option2'>FPS</option>
+  <option value='option2'>Racing</option>
   <option value='option5'>Simulation</option>
   <option value='option6'>Strategy</option>
   <option value='option7'>Sports</option>
@@ -184,25 +191,25 @@ const AddGameView = (props) => {
   <option value='option9'>Open World</option>
   <option value='option10'>Shooter</option>
 </Select>
-</Box>
-    </ChakraProvider>
+    </Box>
+</ChakraProvider>
 
 
 <Divider size= '5000px'  color='primary.700' />
 
 
-<center> <Button
-           
-            mt={4}
-            colorScheme='teal'
-            isLoading={props.isSubmitting}
-            type='submit'
-          >
-            Submit
-          </Button>
+<center> 
+  <Button
+      mt={4}
+      colorScheme='teal'
+      isLoading={props.isSubmitting}
+      type='submit'>
+      Submit
+  </Button>
 </center>
-</Box>
+  </Box>
 </center>
+
       </div>
     );
   };
