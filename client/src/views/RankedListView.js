@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton, Badge, Heading, VStack, Text, Stack, Button, Box, useToast, Flex, HStack,} from "@chakra-ui/react";
+import { IconButton, Badge, Heading, VStack, Text, Stack, Button, Box, useToast, Flex, HStack, StatHelpText,} from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons"
 
 const RankedListView = ({platformSelection}) => {
@@ -13,10 +13,13 @@ const RankedListView = ({platformSelection}) => {
                 method: "POST"
             })
             .then((res) => {
-               
-               // Update the individual game vote count
-               var res = game.votes++;
-            
+               // Update the individual game vote count, set and sort state.
+               var index = games.findIndex(x=> x._id === game._id);
+               game.votes++;
+               setGames([...games.slice(0,index), 
+                        Object.assign({}, games[index], game),
+                        ...games.slice(index+1)]
+                        .sort((a,b) => b.votes - a.votes))
             })
             .catch(err => console.log(err));
 
@@ -26,12 +29,16 @@ const RankedListView = ({platformSelection}) => {
                 method: "POST"
             })
             .then((res) => {
-               alert(`Down-vote recorded for ${game.title}`)
-               // Update the individual game vote count
-               var res = game.votes--;
+               // Update the individual game vote count, set and sort state.
+               var index = games.findIndex(x=> x._id === game._id);
+               game.votes--;
+               setGames([...games.slice(0,index), 
+                        Object.assign({}, games[index], game),
+                        ...games.slice(index+1)]
+                        .sort((a,b) => b.votes - a.votes))
             })
+            .catch(err => console.log(err));
         }
-        
     }
 
     React.useEffect(() => {
@@ -63,7 +70,10 @@ const RankedListView = ({platformSelection}) => {
                                             <IconButton
                                                 variant='outline'
                                                 aria-label='Vote Down'
-                                                icon={<ChevronDownIcon />}>
+                                                icon={<ChevronDownIcon />}
+                                                onClick={() => {
+                                                    gameVote(game, false)
+                                                }}>
                                             </IconButton>
                                         </VStack>
                                         <Box margin='2rem'>
