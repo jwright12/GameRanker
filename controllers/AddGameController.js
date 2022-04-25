@@ -12,6 +12,13 @@ const { updateOne } = require('../models/GameModel');
 const router = express.Router();
 const Game = require('../models/GameModel');
 
+router.post('/game', async function (req,res) {
+
+   
+   console.log(req.body)
+
+});
+
 router.post('/', async function (req,res) {
    console.log("Game Post")
    const games = [

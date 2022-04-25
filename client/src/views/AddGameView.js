@@ -21,8 +21,52 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper
 } from '@chakra-ui/react'
+import React from 'react';
 
 const AddGameView = (props) => {
+  /*
+    We need to set AddGameVie state information so that when Users enter data intot he form fields it is updated. It needs to be updated because on the Submit button evemt
+    it will need to read the state values and pass it to the server.
+  */
+
+    // One for each initial value of the state data we want to keep track of
+    const [gameData, setGameData] = React.useState({})
+    const[title, setTitle] = React.useState('');
+    const[publisher, setPublisher] = React.useState('');
+
+    const updateTitle = async (e) => {
+      setTitle(e.target.value, () => {})
+    }
+
+    React.useEffect(() => {
+      setGameData({...gameData, title: title});
+
+    }, [title]);
+
+    React.useEffect(() => {
+      setGameData({...gameData, publisher: publisher});
+      
+    }, [title]);
+
+    const submitToServer = () => {
+      
+      const url = `/controllers/add_game/game`;
+
+      fetch(url,{
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(gameData)
+      })
+      .then((res) => {
+        console.log("DB insertion succeeded.")
+      })
+      .catch((err) => {
+        console.log("Something went wrong.")
+      })
+    }
 
     return (
     <>
@@ -36,7 +80,7 @@ const AddGameView = (props) => {
             <Box p={8}>
               <FormControl variant='floating' id='Game-title' isRequired isInvalid>
                 <FormLabel>Game title</FormLabel>
-                <Input placeholder='' />
+                <Input placeholder='' value={title} onChange={(e) => {updateTitle(e)}}/>
               </FormControl>
             </Box>
       
@@ -125,7 +169,10 @@ const AddGameView = (props) => {
                   mt={4}
                   colorScheme='teal'
                   isLoading={props.isSubmitting}
-                  type='submit'>
+                  type='submit'
+                  onClick={() => {
+                    submitToServer()
+                  }}>
                   Submit
               </Button>
             </Center>
