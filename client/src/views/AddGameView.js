@@ -33,10 +33,24 @@ const AddGameView = (props) => {
     const [gameData, setGameData] = React.useState({})
     const[title, setTitle] = React.useState('');
     const[publisher, setPublisher] = React.useState('');
+    const[platform, setPlatform] = React.useState('');
+    const[genre, setGenre] = React.useState('');
 
     const updateTitle = async (e) => {
       setTitle(e.target.value, () => {})
     }
+
+    const updatePublisher = async (e) => {
+      setPublisher(e.target.value, () => {})
+    }
+
+    const updatePlatform = async (e) => {
+      setPlatform(e.target.value, () => {})
+    }
+    const updateGenre = async (e) => {
+      setGenre(e.target.value, () => {})
+    }
+
 
     React.useEffect(() => {
       setGameData({...gameData, title: title});
@@ -45,8 +59,18 @@ const AddGameView = (props) => {
 
     React.useEffect(() => {
       setGameData({...gameData, publisher: publisher});
-      
-    }, [title]);
+
+    }, [publisher]);
+
+    React.useEffect(() => {
+      setGameData({...gameData, platform: platform});
+
+    }, [platform]);
+
+    React.useEffect(() => {
+      setGameData({...gameData, genre: genre});
+
+    }, [genre]);
 
     const submitToServer = () => {
       
@@ -80,7 +104,7 @@ const AddGameView = (props) => {
             <Box p={8}>
               <FormControl variant='floating' id='Game-title' isRequired isInvalid>
                 <FormLabel>Game title</FormLabel>
-                <Input placeholder='' value={title} onChange={(e) => {updateTitle(e)}}/>
+                <Input placeholder='Enter Title here' value={title} onChange={(e) => {updateTitle(e)}}/>
               </FormControl>
             </Box>
       
@@ -89,7 +113,7 @@ const AddGameView = (props) => {
             <Box p={8}>
               <FormControl variant='floating' id='Game-publisher' isRequired isInvalid>
                 <FormLabel>Game Publisher</FormLabel>
-                <Input placeholder=' ' />
+                <Input placeholder='Enter Publisher here' value={publisher} onChange={(e) => {updatePublisher(e)}} />
               </FormControl>
             </Box>
 
@@ -116,18 +140,12 @@ const AddGameView = (props) => {
 
             <Divider size= '5000px'  color='primary.700' />
 
+
             <Box p={8}>
-              <FormControl as='fieldset'>
-                <FormLabel as='legend'>Game Platform</FormLabel>
-                <CheckboxGroup defaultValue='Xbox'>
-                  <HStack spacing='24px'>
-                    {/* Use checkbox group and set checkboxgroup type to radio*/}
-                    <Checkbox value='Xbox' >Xbox</Checkbox>
-                    <Checkbox value='Playstation'>Playstation</Checkbox>
-                    <Checkbox value='Nintendo'>Nintendo</Checkbox>
-                  </HStack>
-                  <FormHelperText>Select all that apply</FormHelperText>
-                </CheckboxGroup>
+              <FormControl variant='floating' id='Game-Platform' isRequired isInvalid>
+                <FormLabel>Game Platform</FormLabel>
+                <Input placeholder='Enter Platform here' value={platform} onChange={(e) => {updatePlatform(e)}}/>
+                <FormHelperText>Example: Nintendo Switch, Xbox one, PS4, ect.</FormHelperText>
               </FormControl>
             </Box>
 
@@ -145,20 +163,20 @@ const AddGameView = (props) => {
             <Box p={8}>
                       
               <FormLabel as='legend'>Select a Game Genre</FormLabel>
-              <Select placeholder='Game genre'>
-                <option value='option1'>Action</option>
-                <option value='option2'>Adventure</option>
-                <option value='option2'>Action-Adventure</option>
-                <option value='option3'>Puzzle</option>
-                <option value='option4'>RPG</option>
-                <option value='option2'>FPS</option>
-                <option value='option2'>Racing</option>
-                <option value='option5'>Simulation</option>
-                <option value='option6'>Strategy</option>
-                <option value='option7'>Sports</option>
-                <option value='option8'>MMO</option>
-                <option value='option9'>Open World</option>
-                <option value='option10'>Shooter</option>
+              <Select placeholder='Game genre' value={genre} onChange={(e) => {updateGenre(e)}}>
+                <option value='Action'>Action</option>
+                <option value='Adventure'>Adventure</option>
+                <option value='Action-Adventure'>Action Adventure</option>
+                <option value='Puzzle'>Puzzle</option>
+                <option value='RPG'>RPG</option>
+                <option value='FPS'>FPS</option>
+                <option value='Racing'>Racing</option>
+                <option value='Simulation'>Simulation</option>
+                <option value='Strategy'>Strategy</option>
+                <option value='Sports'>Sports</option>
+                <option value='MMO'>MMO</option>
+                <option value='Open-World'>Open World</option>
+                <option value='Shooter'>Shooter</option>
               </Select>
             </Box>
             
