@@ -85,10 +85,15 @@ const AddGameView = (props) => {
         body: JSON.stringify(gameData)
       })
       .then((res) => {
-        console.log("DB insertion succeeded.")
+        alert(`${title} inserted successfully.`)
+        setGameData({})
+        setTitle('')
+        setPublisher('')
+        setPlatform('')
+        setGenre('')
       })
       .catch((err) => {
-        console.log("Something went wrong.")
+        console.log(err)
       })
     }
 

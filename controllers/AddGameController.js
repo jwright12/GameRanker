@@ -14,13 +14,18 @@ const Game = require('../models/GameModel');
 
 router.post('/game', async function (req,res) {
 
-   
-   console.log(req.body)
+   console.log(`Adding game: ${req.body}`)
+
+   const game = req.body
+   game.votes = 0;
+   const result = await Game.insertMany(game).catch(err => res.status(404).send(err));
+   res.status(201).send()
 
 });
 
 router.post('/', async function (req,res) {
    console.log("Game Post")
+
    const games = [
      
       {

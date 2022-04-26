@@ -46,7 +46,7 @@ const RankedListView = ({platformSelection}) => {
         fetch(url)
         .then((response) => response.json())
         .then((json) => {
-            setGames(json)
+            setGames(json.sort((a,b) => b.votes - a.votes))
         })
         .catch((error) => console.log(error));
     }, [platformSelection]);
