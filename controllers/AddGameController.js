@@ -14,7 +14,7 @@ const Game = require('../models/GameModel');
 
 router.post('/game', async function (req,res) {
 
-   console.log(`Adding game: ${req.body}`)
+   console.log(`Adding game: ${req.body.title}`)
 
    const game = req.body
    game.votes = 0;
